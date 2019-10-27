@@ -1,0 +1,33 @@
+{extend name="v1/home/layout/layout" /}
+{block name="content"}
+<style>
+    .form{
+        position:relative;
+        top:30px;
+        left:40px;
+    }
+    .reg{
+        font-size: 5px;
+        color:red;
+        /*text-decoration: ;*/
+    }
+
+</style>
+<div class="form">
+    <form action="/login/login" method="post" enctype ="multipart/form-data">
+        {:token()}
+        <table >
+            <tr>
+                <td>邮箱:</td>
+                <td><input type="text" name="email" value=""></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td><input type="text" name="password" value=""><span class="reg"><a href="/login/reg_view">还没有账号?去注册</a></span></td>
+            </tr>
+        </table>
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
+</div>
+{/block}

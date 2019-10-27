@@ -1,0 +1,53 @@
+{extend name="v1/home/layout/layout" /}
+{block name="content"}
+<style>
+    .form{
+        position:relative;
+        top:30px;
+        left:40px;
+    }
+</style>
+<div class="form">
+    <form action="/user/saveGroup" method="post">
+        {:token()}
+        <table >
+            <tr>
+                <td>讨论组ID:</td>
+                <td><input type="text" name="id" value=""></td>
+            </tr>
+        </table>
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
+    <script>
+        var fromid = {$fromid};
+        ws =  new WebSocket("wss://jiangbowen.cn/wss");
+        ws.onmessage=function(e){
+            console.log(e);
+            var message = eval("("+ e.data+")");
+            switch (message.type){
+                case  "init":
+                    console.log(message);
+                    console.log(fromid);
+                    // $.post('/user/bind', {client_id:message.client_id}, function(data){}, 'json');
+                    var bild = '{"type":"bind","fromid":"'+fromid+'"}';
+                    ws.send(bild);
+                    return;
+                case "ping":
+                    ws.send('{"pong"}');
+                    return;
+                case "text":
+                    $(".chat-fui-content").html("");
+                    return;
+                case "say_img":
+                    $(".chat-fui-content").html("");
+                    return;
+                case 'saveg':
+                    console.log('aaaaaaaaa');
+                    return;
+
+            }
+        }
+    </script>
+</div>
+{/block}

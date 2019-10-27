@@ -1,0 +1,48 @@
+{extend name="v1/home/layout/layout" /}
+{block name="content"}
+<style>
+    .form{
+        margin-left: 680px;
+    }
+</style>
+<div class="form">
+    <form action="/users/update" method="post" enctype ="multipart/form-data">
+        <input type="hidden" name="id" value="{{$res['id']}}">
+        {:token()}
+        <table >
+            <tr>
+                <td>姓名:</td>
+                <td><input type="text" name="name" value="{{$res['name']}}"></td>
+            </tr>
+            <tr>
+                <td>年龄:</td>
+                <td> <input type="text" name="age" value="{{$res['age']}}"></td>
+            </tr>
+            <tr>
+                <td>邮箱:</td>
+                <td><input type="text" name="email" value="{{$res['email']}}"></td>
+            </tr>
+            <tr>
+                <td>性别:</td>
+                <td>
+                    <select name="sex" id=""><br><br>
+                        <option value="1" {eq name="$res['sex']" value="1"} selected {/eq}>男</option>
+                        <option value="2" {eq name="$res['sex']" value="2"} selected {/eq}>女</option>
+                        <option value="3" {eq name="$res['sex']" value="3"} selected {/eq}>保密</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>头像:</td>
+                <td> <input type="file" name="pic" value="">
+                    <img src="https://{{$_SERVER['HTTP_HOST']}}/{{$res['pic']}}" alt="">
+                </td>
+            </tr>
+        </table>
+
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
+
+</div>
+{/block}

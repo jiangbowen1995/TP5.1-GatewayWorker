@@ -1,0 +1,21 @@
+{extend name="v1/home/layout/layout" /}
+{block name="content"}
+<style>
+    .form{
+        margin-left: 680px;
+    }
+</style>
+<div class="form">
+    <form action="/login/reg" method="post" enctype ="multipart/form-data">
+        {:token()}
+        <table >
+            <tr>
+                <td>好友ID:</td>
+                <td><input type="text" name="id" value=""></td>
+            </tr>
+        </table>
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
+</div>
+{/block}

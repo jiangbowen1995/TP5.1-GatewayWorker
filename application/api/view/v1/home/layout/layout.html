@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+    <style>
+        .txtCenter{
+            text-align:center;
+            font-size: 30px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .mark{
+            text-align: center;
+            margin-top: 30px;
+            font-family: "Arial Black";
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .span1{
+            margin-right: 30px;
+        }
+        .login{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="txtCenter">
+    {$Think.config.system_name}
+</div>
+<span class="login">
+    <span style="text-align: center">
+        {if condition="$Think.session.id"} 您好,{$Think.session.uname}|<a href="/login/logout">退出
+     {else/} <a href="/login/login_view">登陆</a>|<a href="/login/reg_view">注册</a>
+     {/if}
+        <a href="/">返回首页</a>
+    </span>
+
+</span>
+<hr>
+{block name="content"}
+
+{/block}
+</body>
+</html>

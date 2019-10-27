@@ -1,0 +1,48 @@
+{extend name="v1/home/layout/layout" /}
+{block name="content"}
+<style>
+    .form{
+        margin-left: 680px;
+    }
+</style>
+<div class="form">
+    <form action="/users/insert" method="post" enctype ="multipart/form-data">
+        {{:token()}}
+        <table >
+            <tr>
+                <td>姓名:</td>
+                <td><input type="text" name="name" value=""></td>
+            </tr>
+            <tr>
+                <td>年龄:</td>
+                <td> <input type="text" name="age" value=""></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td><input type="text" name="password" value=""></td>
+            </tr>
+            <tr>
+                <td>邮箱:</td>
+                <td><input type="text" name="email" value=""></td>
+            </tr>
+            <tr>
+                <td>性别:</td>
+                <td>
+                    <select name="sex" id=""><br><br>
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                        <option value="3">保密</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>头像:</td>
+                <td> <input type="file" name="pic" value=""></td>
+            </tr>
+        </table>
+
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
+</div>
+{/block}
